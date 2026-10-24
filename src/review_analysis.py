@@ -70,9 +70,10 @@ def analyze_reviews(reviews):
             "本次结果未展示，请重新分析。"
         )
 
-    if not 1 <= len(observations) <= 3:
-        raise RuntimeError("综合观察数量不符合要求，请重新分析。")
-
+    if not observations:
+        raise RuntimeError(
+            "模型没有返回综合观察，本次结果未展示。"
+        )
     for observation in observations:
         if not isinstance(observation, dict):
             raise RuntimeError("综合观察格式错误，请重新分析。")
